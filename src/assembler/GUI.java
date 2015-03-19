@@ -15,14 +15,15 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class GUI extends JFrame implements ActionListener{
 	
 	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenuItem open, exit;
+	private JMenu fileMenu, help;
+	private JMenuItem open, exit, about;
 	private JTextArea assemblyCode, binaryCode;
 	private JButton translate;
 	private JFileChooser fileChooser;
@@ -50,6 +51,13 @@ public class GUI extends JFrame implements ActionListener{
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(this);
 		fileMenu.add(exit);	
+		
+		help = new JMenu("Help");
+		menuBar.add(help);
+		
+		about = new JMenuItem("About");
+		about.addActionListener(this);
+		help.add(about);
 		
 		assemblyCode = new JTextArea(30,38);
 		binaryCode = new JTextArea(30,38);
@@ -80,6 +88,7 @@ public class GUI extends JFrame implements ActionListener{
 				
 				if(source.equals("Open")) open();	
 				if(source.equals("Exit")) System.exit(0);
+				if(source.equals("About")) about();
 				
 			//handles events for the buttons in the toolbar
 				if(evt.getSource() instanceof JButton) {		
@@ -89,6 +98,16 @@ public class GUI extends JFrame implements ActionListener{
 				
 				}
 				
+		
+	}
+
+	private void about() {
+		JOptionPane.showMessageDialog(this, "Group members: "
+				+ "\nChris Tulsi  14/0719/1627"
+				+ "\nSomebody"
+				+ "\nSomebody"
+				+ "\nSomebody"
+				+ "\nSomebody");
 		
 	}
 
